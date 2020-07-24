@@ -15,3 +15,6 @@ Once the Bellman-Ford detects a negative loop, we trace back the loop in the neg
 Shoutout to Sedgewick for the arbitrage idea: http://algs4.cs.princeton.edu/44sp/
 
 Special thanks to Joninviski for the Bellman-Ford python code: https://gist.github.com/joninvski/701720
+
+2020/7/24 commit
+support python3
