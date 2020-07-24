@@ -1,9 +1,10 @@
-import math, urllib2, json, re
+import math, json, re
+from urllib import request
 
 
 def download():
 	graph = {}
-	page = urllib2.urlopen("http://fx.priceonomics.com/v1/rates/?q=1")
+	page = request.urlopen("http://fx.priceonomics.com/v1/rates/?q=1")
 	jsrates = json.loads(page.read())
 
 	pattern = re.compile("([A-Z]{3})_([A-Z]{3})")
@@ -77,7 +78,7 @@ for path in paths:
 		print("No opportunity here :(")
 	else:
 		money = 100
-		print "Starting with %(money)i in %(currency)s" % {"money":money,"currency":path[0]}
+		print("Starting with %(money)i in %(currency)s" % {"money":money,"currency":path[0]})
 
 		for i,value in enumerate(path):
 			if i+1 < len(path):
@@ -85,5 +86,5 @@ for path in paths:
 				end = path[i+1]
 				rate = math.exp(-graph[start][end])
 				money *= rate
-				print "%(start)s to %(end)s at %(rate)f = %(money)f" % {"start":start,"end":end,"rate":rate,"money":money}
-	print "\n"
+				print("%(start)s to %(end)s at %(rate)f = %(money)f" % {"start":start,"end":end,"rate":rate,"money":money})
+	print("\n")
